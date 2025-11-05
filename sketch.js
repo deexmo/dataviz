@@ -9,7 +9,7 @@ function preload() {
 }
 
 function setup() {
-  let cnv = createCanvas(800, 650);
+  let cnv = createCanvas(1000, 800);
   cnv.parent("canvas-container");
 
   noStroke();
@@ -21,11 +21,11 @@ function setup() {
   let maxPrice = Math.max(...prices);
 
   for (let f of flowerData.flowerlist) {
-    let bloomSize = map(f.price, minPrice, maxPrice, 15, 50);
+    let bloomSize = map(f.price, minPrice, maxPrice, 25, 60);
     flowers.push({
-      x: random(60, width - 60),
-      y: random(100, height - 150),
-      size: random(8, 15),
+      x: random(75, width - 75),
+      y: random(110, height - 160),
+      size: random(10, 17),
       name: f.name,
       category: f.category,
       bloomed: false,
@@ -60,26 +60,26 @@ function draw() {
 
   textAlign(CENTER);
   fill(60);
-  textSize(14);
-  text("(The bigger the flower, the higher the cost)", width / 2, 55);
-  textSize(18);
-  text("Click a seed to water it and make it bloom!", width / 2, 30);
+  textSize(16);
+  text("(The bigger the flower, the higher the cost)", width / 2, 70);
+  textSize(20);
+  text("Click a seed to water it and make it bloom!", width / 2, 40);
 
   textSize(16);
   textAlign(LEFT);
-  text("Shrubs", 60, 610);
-  text("Container Plants", 200, 610);
-  text("Herbaceous Perennials", 400, 610);
-  text("Cacti & Succulents", 640, 610);
+  text("Shrubs", 160, 750);
+  text("Container Plants", 300, 750);
+  text("Herbaceous Perennials", 500, 750);
+  text("Cacti & Succulents", 740, 750);
 
   fill(255, 120, 160);
-  ellipse(40, 605, 25);
+  ellipse(140, 745, 25);
   fill(255, 210, 120);
-  ellipse(180, 605, 25);
+  ellipse(280, 745, 25);
   fill(160, 210, 255);
-  ellipse(380, 605, 25);
+  ellipse(480, 745, 25);
   fill(120, 230, 170);
-  ellipse(620, 605, 25);
+  ellipse(720, 745, 25);
 
   drawParticles();
 
@@ -89,7 +89,7 @@ function draw() {
     if (f.bloomed) {
       stroke(60, 150, 60);
       strokeWeight(2);
-      line(f.x, f.y, f.x, f.y + (f.size + f.growAmount) / 2 + 15);
+      line(f.x, f.y, f.x, f.y + (f.size + f.growAmount) / 2 + 20);
       noStroke();
     }
 
@@ -106,7 +106,7 @@ function draw() {
 
     if (f.bloomed) {
       fill(50);
-      textSize(11);
+      textSize(14);
       text(f.name, f.x, f.y + 10 + (f.size + f.growAmount) / 1.2);
     }
   }
@@ -135,10 +135,10 @@ function mousePressed() {
       for (let i = 0; i < 12; i++) {
         particles.push({
           x: f.x + random(-8, 8),
-          y: f.y - 15,
-          size: random(2, 6),
+          y: f.y - 17,
+          size: random(3, 7),
           alpha: 255,
-          speedX: random(-0.3, 0.3),
+          speedX: random(-0.4, 0.4),
           speedY: random(0.5, 1.2),
         });
       }
